@@ -12,7 +12,7 @@ import java.io.IOException;
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
-
+    // Handle unauthorized access attempts
     @Override
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,
