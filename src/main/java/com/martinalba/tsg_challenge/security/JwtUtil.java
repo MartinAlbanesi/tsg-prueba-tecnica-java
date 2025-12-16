@@ -14,9 +14,9 @@ import java.util.Date;
 @Slf4j
 public class JwtUtil {
 
-    @Value("${jwt.secret}")
+    @Value("${JWT_SECRET}")
     private String jwtSecret;
-    @Value("${jwt.expirationMs}")
+    @Value("${JWT_EXPIRATION}")
     private Long jwtExpirationMs;
 
     private SecretKey key;
