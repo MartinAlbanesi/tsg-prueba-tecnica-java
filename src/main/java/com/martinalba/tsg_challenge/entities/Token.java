@@ -3,7 +3,6 @@ package com.martinalba.tsg_challenge.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
 @Getter
 @Setter
 @Builder
