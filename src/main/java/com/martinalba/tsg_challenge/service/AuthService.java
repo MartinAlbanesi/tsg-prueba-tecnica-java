@@ -7,6 +7,7 @@ import com.martinalba.tsg_challenge.dto.response.TokenResponse;
 import com.martinalba.tsg_challenge.entities.User;
 import com.martinalba.tsg_challenge.repositories.IUserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -54,20 +55,15 @@ public class AuthService {
     }
 
 
-    public TokenResponse refreshToken(String authHeader) {
+    public TokenResponse refreshToken(String refreshToken) {
 
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            throw new IllegalArgumentException("Invalid Authorization header");
-        }
-
-        String oldRefreshToken = authHeader.substring(7);
-        String username = jwtService.extractUsername(oldRefreshToken);
+        String username = jwtService.extractUsername(refreshToken);
 
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
 
-        if (!jwtService.isTokenValid(oldRefreshToken, user)) {
-            throw new IllegalArgumentException("Invalid refresh token");
+        if (!jwtService.isTokenValid(refreshToken, user)) {
+            throw new BadCredentialsException("Invalid refresh token");
         }
 
         String newAccessToken = jwtService.generateAccessToken(user);

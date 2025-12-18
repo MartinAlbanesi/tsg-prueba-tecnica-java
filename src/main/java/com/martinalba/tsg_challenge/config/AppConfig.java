@@ -53,7 +53,6 @@ public class AppConfig {
     public JwtDecoder jwtDecoder() {
         return NimbusJwtDecoder
                 .withSecretKey(jwtService.getSigningKey())
-                .macAlgorithm(MacAlgorithm.HS512)
                 .build();
     }
 
