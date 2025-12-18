@@ -1,17 +1,12 @@
 package com.martinalba.tsg_challenge.service;
 
-import com.martinalba.tsg_challenge.dto.request.PostUpdateRequest;
 import com.martinalba.tsg_challenge.dto.request.UserUpdateRequest;
-import com.martinalba.tsg_challenge.dto.response.PostResponse;
 import com.martinalba.tsg_challenge.dto.response.UserResponse;
-import com.martinalba.tsg_challenge.entities.Post;
 import com.martinalba.tsg_challenge.entities.User;
-import com.martinalba.tsg_challenge.mapper.PostMapper;
 import com.martinalba.tsg_challenge.mapper.UserMapper;
 import com.martinalba.tsg_challenge.repositories.IUserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
