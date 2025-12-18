@@ -34,8 +34,7 @@ public class JwtService {
 
     private String buildToken(final User user, final long expirationMs) {
         return Jwts.builder()
-                .id(user.getId().toString())
-                .subject(user.getUsername())
+                .subject(user.getId().toString())
                 .claim("username", user.getUsername())
                 .issuedAt(new Date())
                 .expiration(new Date(new Date().getTime() + expirationMs))
